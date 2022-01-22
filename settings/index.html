@@ -1,0 +1,77 @@
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+  <title>QuickSearch</title>
+  </head>
+  <body>
+    <nav class="navbar sticky-top navbar-dark bg-dark">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">QuickSearch</span>
+      </div>
+    </nav>
+    <div class="container container-fluid">
+      <p class="h4">Instructions</p>
+      <p>
+        This extension is invoked when the text in the omnibar is prefixed
+        with <code>!f</code>. Everything beyond it is sent to the extension.
+        The first word is used to identify the <i>resolver</i> which is mapped
+        to a URL which can directly trigger a search. For example,
+      </p>
+
+      <p><code>!f cr tokio</code></p>
+      <p>
+        Will be parsed as the <code>cr</code> resolver
+        and the search string as <code>tokio</code> and omnibox will be replaced
+        by <br><code>https://crates.io/crates/tokio</code>.
+      </p>
+
+    </div>
+    <div class="container container-fluid">
+
+      <div class="row">
+        <div class="column">
+          <p class="h4">Mappings</p>
+          <textarea
+            style="font-family:monospace"
+            class="form-control" rows="12" id="resolvers"/>
+          </textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column">
+          <div
+            id="error"
+            style="display:none"
+            class="alert alert-danger alert-dismissable"
+            role="alert"></div>
+
+          <div
+            id="msg"
+            style="display:none"
+            class="alert alert-success alert-dismissable"
+            role="alert"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="d-flex flex-column">
+            <button type="button" class="btn btn-primary btn-block"
+                                  id="submit">Save</button>
+        </div>
+      <div>
+
+    </div>
+
+    <script src="settings.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="popper.min.js"></script>
+  </body>
+</html>
+

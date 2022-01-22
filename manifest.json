@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "QuickSearch",
+  "version": "0.0.1",
+  "description": "An omnibox plugin to make search quicker",
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "quicksearch@example.com"
+    }
+  },
+
+  "omnibox": {
+    "keyword": "!f"
+  },
+  "background": {
+    "scripts": ["quicksearch.js"]
+  },
+  "permissions": [
+    "storage"
+  ],
+  "options_ui": {
+    "page": "settings/index.html",
+    "open_in_tab": true,
+    "browser_style": true
+  }
+}
