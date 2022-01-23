@@ -10,7 +10,7 @@ function updateUI(settings) {
 
 // Initialize the text area with the current settings.
 browser.storage.local.get("resolvers").then((v) => {
-    if (Object.hasOwn(v, "resolvers")) {
+    if (Object.hasOwnProperty.call(v, "resolvers")) {
         updateUI(v.resolvers);
     } else {
         updateUI({});

@@ -16,7 +16,7 @@ const loadResolvers = function() {
     browser.storage.local.get("resolvers").then((v) => {
         // The storage will return the output as { "resolvers": Object } as
         // it supports accepting an array of keys.
-        if (Object.hasOwn(v, "resolvers")) {
+        if (Object.hasOwnProperty.call(v, "resolvers")) {
             resolvers = v.resolvers;
             return;
         }
