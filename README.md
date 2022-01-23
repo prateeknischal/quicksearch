@@ -71,6 +71,17 @@ Wikipedia.
 
 ![Settings](assets/settings.png)
 
+## Alternatives
+
+This idea has a lot in common with "Adding your custom search engine in Firefox"
+which already exists for simple searches and only searches.
+* [Add a keyword for this Search](https://superuser.com/a/7336/1292407)
+* [Firefox Add-ons - Add custom search
+  engine](https://addons.mozilla.org/en-US/firefox/addon/add-custom-search-engine/)
+* [OpenSearch](https://developer.mozilla.org/en-US/docs/Web/OpenSearch)
+
+This project is an attempt to make the omnnibox do a little more!
+
 ## Contributing
 
 - [ ] Ability to find resolvers from the smallest unique prefix. For example,
