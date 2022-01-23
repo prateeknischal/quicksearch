@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "QuickSearch",
-  "version": "0.0.1",
-  "description": "An omnibox plugin to make search quicker",
+  "version": "0.1.0",
+  "description": "An omnibox add-on to make templatize frequent URLs and searches",
 
   "browser_specific_settings": {
     "gecko": {
