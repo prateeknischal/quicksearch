@@ -4,7 +4,7 @@ A [omnibox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensio
 extension which implements `!g` style search redirections implemented in
 [DuckDuckGo](duckduckgo.com/) but locally.
 
-> **This extension is in beta and hasn't been published yet**
+> **This extension is still in beta but is usable though**
 
 ---
 
@@ -26,9 +26,13 @@ token and if found, the remaining tokens will replace the `$TERM$` keyword in
 the template URL. If no resolvers are found, the omnibox is just cleared.
 
 ## Installation
-At this point, the extension is in beta and not available on the Extension
-distribution channels. In order to use it,
 
+The extension is available in the Mozilla Add-Ons store at
+[QuickSearch](https://addons.mozilla.org/en-US/firefox/addon/quicksearch/)
+
+## Development on the extension
+
+To build your own extension
 1. Clone the repository using
     ```
     git clone https://github.com/prateeknischal/quicksearch
@@ -39,6 +43,9 @@ distribution channels. In order to use it,
    cloned and select the `manifest.json` file and click on open.
 
 And that's it, the plugin should be ready to go!
+
+To build the bundle, Mozilla recommends [mozilla/web-ext](https://github.com/mozilla/web-ext)
+to build and sign.
 
 ## Usage
 
