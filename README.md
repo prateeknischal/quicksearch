@@ -7,6 +7,16 @@ extension which implements `!g` style search redirections implemented in
 
 ---
 
+## Table of Contents
+* [QuickSearch in action](#quicksearch-in-action)
+* [How does it work](#how-does-it-work)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Configuration](#configuration)
+* [Development on the extension](#development-on-the-extension)
+* [Alternatives](#alternatives)
+* [Contributing](#contributing)
+
 ## QuickSearch in action
 
 A small demonstration with the default aliases.
