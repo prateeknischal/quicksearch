@@ -1,14 +1,13 @@
 # QuickSearch
+![https://looka.com/s/82298590](assets/white_logo_full.png)
 
 A [omnibox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/omnibox)
 extension which implements `!g` style search redirections implemented in
 [DuckDuckGo](duckduckgo.com/) but locally.
 
-> **This extension is still in beta but is usable though**
-
 ---
 
-## Demo
+## QuickSearch in action
 
 A small demonstration with the default aliases.
 
@@ -30,37 +29,17 @@ the template URL. If no resolvers are found, the omnibox is just cleared.
 The extension is available in the Mozilla Add-Ons store at
 [QuickSearch](https://addons.mozilla.org/en-US/firefox/addon/quicksearch/)
 
-## Development on the extension
-
-To build your own extension
-1. Clone the repository using
-    ```
-    git clone https://github.com/prateeknischal/quicksearch
-    ```
-2. On your Firefox browser, type `about:debugging` in the search bar
-3. Click on `This Firefox` and then `Load Temporary Add-on`
-4. Once the file explorer opens, navigate to location where the project was
-   cloned and select the `manifest.json` file and click on open.
-
-And that's it, the plugin should be ready to go!
-
-To build the bundle, Mozilla recommends [mozilla/web-ext](https://github.com/mozilla/web-ext)
-to build and sign.
-
 ## Usage
 
 Type `!f rs tokio` and it should open the documentation for the
 [tokio](https://tokio.rs) crate on [docs.rs](https://docs.rs). By default there
 are a few aliases. See the [Configuration](#Configuration) section.
 
+![example](assets/omnibox.png)
+
 ## Configuration
 
-In order to configure the aliases, open the `Settings` page on Firefox and
-navigate to `Extensions & Themes`. You should see the `QuickSearch` extension
-enabled.
-
-> Since this is installed in debugging mode, it won't be persisted between
-> browser restarts.
+Navigate to the Settings > Extension & Themes.
 
 Click the 3 dots and then `Preferences` upon which it should show up the
 configuration page. In the **Mappings** section, you can add your own aliases
@@ -77,6 +56,23 @@ Wikipedia.
 > in HTTP GET.
 
 ![Settings](assets/settings.png)
+
+## Development on the extension
+
+To build your own extension
+1. Clone the repository using
+    ```
+    git clone https://github.com/prateeknischal/quicksearch
+    ```
+2. On your Firefox browser, type `about:debugging` in the search bar
+3. Click on `This Firefox` and then `Load Temporary Add-on`
+4. Once the file explorer opens, navigate to location where the project was
+   cloned and select the `manifest.json` file and click on open.
+
+And that's it, the plugin should be ready to go!
+
+To build the bundle, Mozilla recommends [mozilla/web-ext](https://github.com/mozilla/web-ext)
+to build and sign.
 
 ## Alternatives
 
