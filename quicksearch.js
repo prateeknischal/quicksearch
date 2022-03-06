@@ -1,14 +1,34 @@
+let runtime = browser.runtime;
+
 browser.omnibox.setDefaultSuggestion({
     description: "Find what you need faster with !f"
 });
 
-const __placeholder__ = "$TERM$";
+const __placeholder = "$TERM$";
+const __key_reserve_prefix = '@';
+
 const __default_resolvers = {
     "cr": "https://crates.io/crates/$TERM$",
     "rs": "https://docs.rs/$TERM$/latest",
     "go": "https://pkg.go.dev/search?q=$TERM$",
-    "yt": "https://www.youtube.com/results?search_query=$TERM$"
+    "yt": "https://www.youtube.com/results?search_query=$TERM$",
+    "kc": "https://c.xkcd.com/random/comic/"
 };
+
+// The reserved keys dictionary contains the functions to be executed against
+// the keywords. At this time, they are not accepting any args which can be
+// extended in the future where if the key is a reserved key, then all tokens
+// after that will be sent in as the argument. for example,
+//
+// !f @config foo bar baz
+// __reserved_keys['config']('foo bar baz')
+//
+// It will be upto the function to decide what to do with the unparsed input.
+const __reserved_keys = {
+    "settings": runtime.openOptionsPage,
+    "setting": runtime.openOptionsPage,
+    "config": runtime.openOptionsPage
+}
 
 let resolvers = __default_resolvers;
 
@@ -21,7 +41,7 @@ const loadResolvers = function() {
             return;
         }
 
-        // If the resolvers are empty, store the default values.
+        // If the resolvers are empty, store the default values
         browser.storage.local.set({"resolvers": __default_resolvers});
     }, (e) => {
         // Log the error for diagnosis
@@ -58,17 +78,41 @@ browser.omnibox.onInputEntered.addListener((text) => {
 function resolveUrl(text) {
     text = text.trim();
     const delimPos = text.indexOf(" ");
-    if (delimPos == -1) {
-        // return undefined as we don't have anything to do.
+
+    // Define the key as the first token in irrespective of if there is a
+    // replacing value. If the value is empty, the token would represent a
+    // bookmark.
+    let key = text;
+    if (delimPos != -1) {
+        // eg: "rs foo" => key = rs, value = foo
+        key = text.substr(0, delimPos);
+    }
+
+    // Check if the key is reserved
+    if (isReservedKey(key)) {
+        const op = __reserved_keys[key.replace(__key_reserve_prefix, '')];
+        if (op !== undefined && typeof(op) === 'function') {
+            // Call the function against the reserved keyword
+            op();
+        }
         return;
     }
 
-    // eg: "rs foo" => key = rs, value = foo
-    const key = text.substr(0, delimPos);
-
     const urlTemplate = resolvers[key];
     if (urlTemplate !== undefined) {
-        const value = text.substr(delimPos + 1);
-        return urlTemplate.replace(__placeholder__, value);
+        const value = delimPos == -1 ? '' : text.substr(delimPos + 1);
+        return urlTemplate.replace(__placeholder, value);
     }
+}
+
+function isReservedKey(key) {
+    if (key.length == 0) {
+        return false;
+    }
+
+    if (!key.startsWith(__key_reserve_prefix)) {
+        return false;
+    }
+
+    return true;
 }

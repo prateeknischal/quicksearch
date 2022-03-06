@@ -12,6 +12,8 @@ extension which implements `!g` style search redirections implemented in
 * [How does it work](#how-does-it-work)
 * [Installation](#installation)
 * [Usage](#usage)
+  * [As a bookmarking tool](#using-as-a-bookmarking-tool)
+  * [Quick access to settings](#quick-access-to-settings)
 * [Configuration](#configuration)
 * [Development on the extension](#development-on-the-extension)
 * [Alternatives](#alternatives)
@@ -47,12 +49,29 @@ are a few aliases. See the [Configuration](#Configuration) section.
 
 ![example](assets/omnibox.png)
 
+### Using as a bookmark tool
+
+You can now use a resolver with no search strings, which would become a
+bookmarking tool. For example,
+```json
+{
+    "kc": "https://c.xkcd.com/random/comic"
+}
+```
+
+In order to use it, `!f kc`.
+
+### Quick access to settings
+
+The extension now supports navigating to the settings using a simple `!f
+@config`.
+
+> Because the extension is using `@` for identifying reserved functions within the extension, it can no longer be used for user-defined resolvers. If they are defined, they won't be accessible.
+
 ## Configuration
 
-Navigate to the Settings > Extension & Themes.
-
-Click the 3 dots and then `Preferences` upon which it should show up the
-configuration page. In the **Mappings** section, you can add your own aliases
+Type `!f @config` in omnibox, voila!
+In the **Mappings** section, you can add your own aliases
 and then click on save.
 
 As an example, if you wanted to add a Wikipedia resolver, you could add
@@ -100,7 +119,7 @@ This project is an attempt to make the omnnibox do a little more!
 - [ ] Ability to find resolvers from the smallest unique prefix. For example,
 `!f w <term>` should invoke the `wiki` resolver if there are no other resolvers
 starting with `w`. Basically a trie based search
-- [ ] Add `!f @settings` to open the settings page directly
+- [x] Add `!f @config` to open the settings page directly
 - [ ] Potentially be useful for any URL manipulation
 - [ ] Intelligent resolvers. For example, If I want to look for the docs for
 [`io.Writer`](https://pkg.go.dev/io#Writer) and I invoke the `go` resolver, it

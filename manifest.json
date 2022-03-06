@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "QuickSearch",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "An omnibox add-on to make templatize frequent URLs and searches",
 
   "browser_specific_settings": {

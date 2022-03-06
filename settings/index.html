@@ -26,12 +26,34 @@
         to a URL which can directly trigger a search. For example,
       </p>
 
-      <p><code>!f cr tokio</code></p>
-      <p>
-        Will be parsed as the <code>cr</code> resolver
+      <strong>User defined resolvers with search strings</strong>
+      <p><code>!f cr tokio</code>
+        will be parsed as the <code>cr</code> resolver
         and the search string as <code>tokio</code> and omnibox will be replaced
         by <br><code>https://crates.io/crates/tokio</code>.
       </p>
+
+      <strong>User defined resolvers as bookmarks</strong>
+      <p><code>!f kc</code>
+        will be parsed as the <code>kc</code> resolver
+        without a search string and the ombinbox will be replaced with the URL
+        itself, essentially serving as a bookmark for a link. In this case, a
+        bookmark for
+        <br><code>https://c.xkcd.com/random/comic/</code>.
+      </p>
+
+      <strong>Quick access to this settings page</strong>
+      <p><code>!f @config</code>
+        will be parsed as the <code>@config</code> resolver which will open the
+        settings page for you, i.e. this page instead of navigating through the
+        browser menus.
+      </p>
+
+      <div class="alert alert-primary" role="alert">
+        Because the extension is using <code>@</code> for identifying reserved
+        functions within the extension, it can no longer be used for
+        user-defined resolvers. If they are defined, they won't be accessible.
+      </div>
 
     </div>
     <div class="container container-fluid">
